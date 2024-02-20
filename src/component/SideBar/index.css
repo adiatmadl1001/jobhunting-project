@@ -1,0 +1,34 @@
+.sider {
+  background: #f8f8fd !important ;
+  box-shadow: 1px 0px 0px 0px rgba(211, 214, 219, 1);
+}
+
+.ant-layout-sider-children {
+  display: grid;
+  grid-template-rows: 85px 50% 40%;
+}
+
+.sider-menu {
+  padding: 0;
+}
+
+.sider-menu li {
+  padding: 12px 32px;
+  color: #7c8493;
+  list-style: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  cursor: pointer;
+}
+
+.sider-menu li:hover {
+  color: #4640de;
+  background: #E9EBFD;
+}
+
+.logo {
+  padding: 20px ;
+  text-align: start;
+}

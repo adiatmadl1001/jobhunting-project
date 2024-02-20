@@ -1,0 +1,42 @@
+.form-wrapper{
+    width: 408px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,45px);
+    text-align: center;
+    display: grid;
+    gap: 20px;
+}
+
+.btn-google{
+    width: 100%;
+    color:#4640DE;
+    font-weight:bold ;
+}
+.line{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    color:#D6DDEB;
+}
+.line:before, .line:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 50%;
+    height: 1px;
+    content: '\a0';
+    background-color: #D6DDEB;
+}
+.line:before {
+    margin-left: -50%;
+    text-align: right;
+}
+
+.form-wrapper p{
+    margin: 0;
+    text-align: left;
+}
+.form-wrapper h2{
+    margin: 0;
+}
