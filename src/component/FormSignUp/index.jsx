@@ -1,13 +1,15 @@
 import { useState } from "react"
 import { Form, Input, Button, Typography, Radio, message } from "antd"
-import { useDispatch, useSelector  } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { actionRegister } from "@/redux/user/action"
+import { useRouter } from "next/navigation"
 import "./index.css"
 const { Title, Text } = Typography
 
 export default function FormSignup() {
   const [mode, setMode] = useState("top")
   const dispatch = useDispatch()
+  const router = useRouter()
   const { loading } = useSelector((state) => state.user)
   const handleModeChange = (e) => {
     setMode(e.target.value)
@@ -18,7 +20,12 @@ export default function FormSignup() {
       return
     }
     const response = await dispatch(actionRegister(value))
-    response ? console.log("complete") : console.error("Invalid password")
+    if (response) {
+      message.success(response.msg)
+      router.push("/signin")
+    } else {
+      message.error(response.msg)
+    }
   }
   return (
     <div className="form-wrapper">
@@ -36,16 +43,52 @@ export default function FormSignup() {
         <Text className="line">or Sign Up with Email</Text>
       </div>
       <Form layout="vertical" onFinish={register}>
-        <Form.Item label="Full name" name="username">
+        <Form.Item
+          label="Full name"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: "Please input your name!",
+            },
+          ]}
+        >
           <Input placeholder="Enter your full name" />
         </Form.Item>
-        <Form.Item label="Email" name="email">
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+            },
+          ]}
+        >
           <Input placeholder="Enter email address" />
         </Form.Item>
-        <Form.Item label="Password" name="password">
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+        >
           <Input.Password placeholder="input password" />
         </Form.Item>
-        <Form.Item label="Confirm Password" name="confirm_password">
+        <Form.Item
+          label="Confirm Password"
+          name="confirm_password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your confirm password!",
+            },
+          ]}
+        >
           <Input.Password placeholder="input password" />
         </Form.Item>
         <Button
@@ -67,4 +110,3 @@ export default function FormSignup() {
     </div>
   )
 }
-
