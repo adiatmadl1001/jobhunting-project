@@ -48,7 +48,6 @@ export default function FormSignup() {
           name="username"
           rules={[
             {
-              required: true,
               message: "Please input your name!",
             },
           ]}
@@ -60,7 +59,6 @@ export default function FormSignup() {
           name="email"
           rules={[
             {
-              required: true,
               message: "Please input your email!",
             },
           ]}
@@ -72,7 +70,6 @@ export default function FormSignup() {
           name="password"
           rules={[
             {
-              required: true,
               message: "Please input your password!",
             },
           ]}
@@ -84,7 +81,6 @@ export default function FormSignup() {
           name="confirm_password"
           rules={[
             {
-              required: true,
               message: "Please input your confirm password!",
             },
           ]}
