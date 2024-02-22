@@ -1,19 +1,26 @@
 import { useState } from "react"
-import { Form, Input, Button, Typography, Radio, Checkbox } from "antd"
+import { Form, Input, Button, Typography, Radio, Checkbox, message } from "antd"
 import "./index.css"
 import { useDispatch } from "react-redux"
 import { actionSignin } from "@/redux/user/action"
+import { useRouter } from "next/navigation"
 const { Title, Text } = Typography
 
 const FormLogin = () => {
   const [mode, setMode] = useState("top")
   const dispatch = useDispatch()
+  const router = useRouter()
   const handleModeChange = (e) => {
     setMode(e.target.value)
   }
   const login = async (value) => {
     const response = await dispatch(actionSignin(value))
-    console.log(response)
+    if (response.success) {
+      message.success(response.msg)
+      router.push("/dashboard")
+    }else {
+      message.error(response.msg)
+    }
   }
   return (
     <div className="form-wrapper">

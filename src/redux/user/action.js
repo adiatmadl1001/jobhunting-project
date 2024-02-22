@@ -1,4 +1,4 @@
-import { serviceRegister, serviceSignin } from "@/service/user"
+import { serviceGetUser, serviceRegister, serviceSignin } from "@/service/user"
 
 export const actionRegister = (payload) => async (dispatch) => {
   dispatch({
@@ -37,5 +37,26 @@ export const actionSignin = (payload) => async (dispatch) => {
       authenticate: data.success,
     },
   })
+  return data
+}
+
+export const actionGetUser = (payload) => async (dispatch) => {
+  dispatch({
+    type: "user_loading",
+    payload: {
+      loading: true,
+    },
+  })
+
+  const { data } = await serviceGetUser()
+  console.log(data)
+
+  dispatch({
+    type: "user_loading",
+    payload: {
+      loading: true,
+    },
+  })
+
   return data
 }
