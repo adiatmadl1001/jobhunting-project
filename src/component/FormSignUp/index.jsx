@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Form, Input, Button, Typography, Radio, message } from "antd"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { actionRegister } from "@/redux/user/action"
 import { useRouter } from "next/navigation"
 import "./index.css"
@@ -10,7 +10,7 @@ export default function FormSignup() {
   const [mode, setMode] = useState("top")
   const dispatch = useDispatch()
   const router = useRouter()
-  const { loading } = useSelector((state) => state.user)
+  // const { loading } = useSelector((state) => state.user)
   const handleModeChange = (e) => {
     setMode(e.target.value)
   }
@@ -91,7 +91,6 @@ export default function FormSignup() {
           htmlType="submit"
           type="primary"
           style={{ width: "100%", fontWeight: "bold" }}
-          loading={loading}
         >
           Continue
         </Button>
